@@ -1,6 +1,6 @@
 FROM ubuntu:14.04
 
-MAINTAINER KiwenLau <kiwenlau@gmail.com>
+MAINTAINER ejunjsh <sjj050121014@163.com>
 
 WORKDIR /root
 
