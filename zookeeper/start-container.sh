@@ -15,6 +15,7 @@ do
                 jackshao/zookeeper:1.0 &> /dev/null
         sleep 1
         sudo docker exec -it zk$i sh ./create-myid.sh $i
+        sudo docker exec -it zk$i zkServer.sh start
         i=$(( $i + 1 ))
 done
 sleep 1
