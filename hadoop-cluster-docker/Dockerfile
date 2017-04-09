@@ -5,7 +5,8 @@ MAINTAINER ejunjsh <sjj050121014@163.com>
 WORKDIR /root
 
 # install openssh-server, openjdk and wget
-RUN apt-get update && apt-get install -y openssh-server openjdk-7-jdk wget vim
+RUN apt-get update 
+RUN apt-get install -y openssh-server openjdk-7-jdk wget vim
 
 # install hadoop 2.7.3
 RUN wget http://mirrors.cnnic.cn/apache/hadoop/common/hadoop-2.7.3/hadoop-2.7.3.tar.gz && \

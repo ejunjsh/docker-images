@@ -7,7 +7,7 @@ N=${n:-3}
 
 # start hadoop master container
 sudo docker rm -f hadoop-master &> /dev/null
-sleep 5
+sleep 1
 echo "start hadoop-master container..."
 sudo docker run -itd \
                 --net=hadoop \
@@ -23,7 +23,7 @@ i=1
 while [ $i -lt $N ]
 do
 	sudo docker rm -f hadoop-slave$i &> /dev/null
-        sleep 5
+        sleep 1
 	echo "start hadoop-slave$i container..."
 	sudo docker run -itd \
 	                --net=hadoop \
@@ -34,5 +34,7 @@ do
 done 
 
 # get into hadoop master container
-sleep 10
+sleep 1
+sudo docker exec -it hadoop-master start-dfs.sh
+sudo docker exec -it hadoop-master start-yarn.sh 
 sudo docker exec -it hadoop-master bash
