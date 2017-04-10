@@ -13,11 +13,19 @@ RUN wget http://mirrors.cnnic.cn/apache/hadoop/common/hadoop-2.7.3/hadoop-2.7.3.
     tar -xzvf hadoop-2.7.3.tar.gz && \
     mv hadoop-2.7.3 /usr/local/hadoop && \
     rm hadoop-2.7.3.tar.gz
+RUN wget http://mirror.bit.edu.cn/apache/hive/hive-1.2.2/apache-hive-1.2.2-bin.tar.gz && \
+    tar -xvf  apache-hive-1.2.2-bin.tar.gz && \
+    mv apache-hive-1.2.2-bin  /usr/local/hive && \
+    rm apache-hive-1.2.2-bin.tar.gz
 
+RUN wget https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-5.1.41.tar.gz && \
+    tar -xvf mysql-connector-java-5.1.41.tar.gz && \
+    mv mysql-connector-java-5.1.41/mysql* /usr/local/hive/lib/ && \
+    rm -rf mysql-connector-java-5.1.41*
 # set environment variable
 ENV JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64 
 ENV HADOOP_HOME=/usr/local/hadoop 
-ENV PATH=$PATH:/usr/local/hadoop/bin:/usr/local/hadoop/sbin 
+ENV PATH=$PATH:/usr/local/hive/bin:/usr/local/hadoop/bin:/usr/local/hadoop/sbin 
 
 # ssh without key
 RUN ssh-keygen -t rsa -f ~/.ssh/id_rsa -P '' && \
@@ -37,7 +45,8 @@ RUN mv /tmp/ssh_config ~/.ssh/config && \
     mv /tmp/yarn-site.xml $HADOOP_HOME/etc/hadoop/yarn-site.xml && \
     mv /tmp/slaves $HADOOP_HOME/etc/hadoop/slaves && \
     mv /tmp/start-hadoop.sh ~/start-hadoop.sh && \
-    mv /tmp/run-wordcount.sh ~/run-wordcount.sh
+    mv /tmp/run-wordcount.sh ~/run-wordcount.sh && \
+    mv /tmp/hive-site.xml /usr/local/hive/conf/
 
 RUN chmod +x ~/start-hadoop.sh && \
     chmod +x ~/run-wordcount.sh && \
