@@ -34,5 +34,5 @@ RUN ssh-keygen -t rsa -f ~/.ssh/id_rsa -P '' && \
     cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
 
 
-CMD [ "sh", "-c", "service ssh start; bash"]
+CMD [ "sh", "-c", "service ssh start; su - ec  /usr/local/ec/bin/elasticsearch"]
 

@@ -16,7 +16,6 @@ do
                 -p 920$(( $i - 1 )):9200   \
                 jackshao/elasticsearch:1.0 &> /dev/null
         sleep 1 
-        sudo docker exec -d  ec$i su - ec  /usr/local/ec/bin/elasticsearch
         i=$(( $i + 1 ))
 done
 sleep 1
