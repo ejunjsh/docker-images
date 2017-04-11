@@ -5,7 +5,8 @@ MAINTAINER ejunjsh <sjj050121014@163.com>
 WORKDIR /root
 
 # install openssh-server, mysql-server
-RUN apt-get update && apt-get install -y openssh-server vim mysql-server
+RUN apt-get update 
+RUN apt-get install -y openssh-server vim mysql-server
 RUN /etc/init.d/mysql start \
     && mysql -uroot -e "grant all privileges on *.* to 'root'@'%' identified by 'wapwap12';" \
     && mysql -uroot -e "grant all privileges on *.* to 'root'@'localhost' identified by 'wapwap12';" 
