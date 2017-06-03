@@ -1,15 +1,15 @@
 #!/bin/bash
 
-# N is the node number of hadoop cluster
+# N is the node number of hbase cluster
 N=$(cat nodes)
 
 
-# change slaves file
+# change regionservers file
 i=1
-rm config/slaves
+rm config/regionservers
 while [ $i -lt $N ]
 do
-	echo "hadoop-slave$i" >> config/slaves
+	echo "hbase-slave$i" >> config/regionservers
         i=`expr $i + 1`
 done 
 
