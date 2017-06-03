@@ -9,7 +9,7 @@ N=${n:-3}
 sudo docker rm -f hbase-master &> /dev/null
 sleep 1
 echo "start hbase-master container..."
-sudo docker run -d \
+sudo docker run -itd \
                 --net=hadoop \
                 --name hbase-master \
                 --hostname hbase-master \
@@ -23,7 +23,7 @@ do
 	sudo docker rm -f hbase-slave$i &> /dev/null
         sleep 1
 	echo "start hbase-slave$i container..."
-	sudo docker run -d \
+	sudo docker run -itd \
 	                --net=hadoop \
 	                --name hbase-slave$i \
 	                --hostname hbase-slave$i \
