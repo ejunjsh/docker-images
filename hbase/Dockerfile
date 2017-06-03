@@ -28,6 +28,7 @@ COPY config/* /tmp/
 RUN mv /tmp/ssh_config ~/.ssh/config && \
     mv /tmp/hbase-site.xml $HBASE_HOME/conf/ && \
     mv /tmp/hbase-env.sh $HBASE_HOME/conf/ && \
+    mv /tmp/start-hbase.sh $HBASE_HOME/bin/ && \
     mv /tmp/regionservers $HBASE_HOME/conf/
 
 
