@@ -12,3 +12,6 @@ echo "start hbase-slave$i container..."
 	                --name hbase-slave$i \
 	                --hostname hbase-slave$i \
 	                ejunjsh/hbase:1.0 &> /dev/null
+
+sleep 1
+echo `sudo docker inspect --format='{{.NetworkSettings.Networks.hadoop.IPAddress}}' hbase-slave$i` hbase-slave$i >> ./etc/hosts
