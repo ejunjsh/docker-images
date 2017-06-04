@@ -9,10 +9,10 @@ RUN echo v1 && apt-get update
 RUN apt-get install -y openssh-server openjdk-8-jdk wget vim
 
 # install hbase 1.2.5
-RUN wget https://mirrors.tuna.tsinghua.edu.cn/apache/hbase/stable/hbase-1.2.5-bin.tar.gz && \
-    tar -xzvf hbase-1.2.5-bin.tar.gz && \
-    mv hbase-1.2.5 /usr/local/hbase && \
-    rm hbase-1.2.5-bin.tar.gz
+RUN wget http://mirror.bit.edu.cn/apache/hbase/1.3.1/hbase-1.3.1-bin.tar.gz && \
+    tar -xzvf hbase-1.3.1-bin.tar.gz && \
+    mv hbase-1.3.1 /usr/local/hbase && \
+    rm hbase-1.3.1-bin.tar.gz
 
 # set environment variable
 ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64 

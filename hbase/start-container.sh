@@ -11,6 +11,8 @@ sleep 1
 echo "start hbase-master container..."
 sudo docker run -itd \
                 --net=hadoop \
+                -p 16010:16010 \
+                -v `pwd`/etc/hosts:/etc/hosts \
                 --name hbase-master \
                 --hostname hbase-master \
                 ejunjsh/hbase:1.0 &> /dev/null
@@ -25,13 +27,20 @@ do
 	echo "start hbase-slave$i container..."
 	sudo docker run -itd \
 	                --net=hadoop \
+                        -v `pwd`/etc/hosts:/etc/hosts  \
 	                --name hbase-slave$i \
 	                --hostname hbase-slave$i \
 	                ejunjsh/hbase:1.0 &> /dev/null
 	i=$(( $i + 1 ))
 done 
 
-# get into hadoop master container
-sleep 1
-sudo docker exec -it hbase-master start-hbase.sh
-sudo docker exec -it hbase-master bash
+# get into hbase master container
+sleep 3
+cp ./etc/hosts.template ./etc/hosts
+echo `sudo docker inspect --format='{{.NetworkSettings.Networks.hadoop.IPAddress}}' hbase-master` hbase-master >> ./etc/hosts 
+i=1
+while [ $i -lt $N ]
+do
+   echo `sudo docker inspect --format='{{.NetworkSettings.Networks.hadoop.IPAddress}}' hbase-slave$i` hbase-slave$i >> ./etc/hosts
+   i=$(( $i + 1 ))
+done
