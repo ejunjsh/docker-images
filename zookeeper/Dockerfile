@@ -21,11 +21,11 @@ ENV PATH=$PATH:/usr/local/zookeeper/bin
 COPY ./config/create-myid.sh /root/
 COPY ./config/zoo.cfg /usr/local/zookeeper/conf/
 
-RUN mkdir -p /var/lib/zookeeper/
+RUN mkdir -p /var/lib/zookeeper/ && chmod +x /root/create-myid.sh
 
 # ssh without key
 RUN ssh-keygen -t rsa -f ~/.ssh/id_rsa -P '' && \
     cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
 
-CMD [ "sh", "-c", "service ssh start; bash"]
+CMD [ "sh", "-c", "service ssh start;./create-myid.sh;zkServer.sh start; bash"]
 

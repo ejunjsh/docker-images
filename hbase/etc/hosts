@@ -7,3 +7,4 @@ ff02::2	ip6-allrouters
 172.18.0.8 hbase-master
 172.18.0.9 hbase-slave1
 172.18.0.10 hbase-slave2
+172.18.0.11 hbase-slave3
