@@ -33,6 +33,8 @@ RUN chown -R ec /var/log/ec
 RUN ssh-keygen -t rsa -f ~/.ssh/id_rsa -P '' && \
     cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
 
+RUN sysctl -w vm.max_map_count=262144
+
 
 CMD [ "sh", "-c", "service ssh start; su - ec  /usr/local/ec/bin/elasticsearch"]
 
