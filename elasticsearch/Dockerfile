@@ -9,10 +9,10 @@ RUN apt-get update
 RUN apt-get install -y openssh-server openjdk-8-jdk wget vim curl
 
 # install zookeeper 3.4.9
-RUN wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.3.0.tar.gz && \
-    tar -xzvf elasticsearch-5.3.0.tar.gz && \
-    mv elasticsearch-5.3.0 /usr/local/ec && \
-    rm elasticsearch-5.3.0.tar.gz 
+RUN wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.4.1.tar.gz && \
+    tar -xzvf elasticsearch-5.4.1.tar.gz && \
+    mv elasticsearch-5.4.1 /usr/local/ec && \
+    rm elasticsearch-5.4.1.tar.gz
 
 # set environment variable
 ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64 
