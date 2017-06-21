@@ -36,5 +36,5 @@ RUN ssh-keygen -t rsa -f ~/.ssh/id_rsa -P '' && \
 RUN sysctl -w vm.max_map_count=262144
 
 
-CMD [ "sh", "-c", "service ssh start;sysctl -w vm.max_map_count=262144; su - ec  /usr/local/ec/bin/elasticsearch"]
+CMD [ "sh", "-c", "service ssh start; su - ec  /usr/local/ec/bin/elasticsearch"]
 
