@@ -6,6 +6,7 @@ sudo docker rm -f ec-slave$1 &> /dev/null
                 --name ec-slave$1 \
                 --hostname ec-slave$1 \
                 --privileged=true \
+                -e slave=1 \
                 jackshao/elasticsearch:1.0 &> /dev/null
         sleep 1 
 

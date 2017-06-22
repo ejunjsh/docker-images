@@ -14,8 +14,8 @@ http.cors.allow-origin : "*"
 http.cors.allow-methods : OPTIONS, HEAD, GET, POST, PUT, DELETE
 http.cors.allow-headers : X-Requested-With,X-Auth-Token,Content-Type, Content-Length
 
+
 discovery.zen.minimum_master_nodes: 2
-discovery.zen.ping.multicast.enabled: false
 discovery.zen.ping.unicast.hosts:
    - ec-master1
    - ec-master2

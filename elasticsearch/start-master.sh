@@ -15,6 +15,7 @@ do
                 --hostname ec-master$i \
                 -p 920$(( $i - 1 )):9200   \
                 --privileged=true \
+                -e master=1 \
                 jackshao/elasticsearch:1.0 &> /dev/null
         sleep 1 
         i=$(( $i + 1 ))

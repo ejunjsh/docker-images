@@ -19,8 +19,8 @@ ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 ENV PATH=$PATH:/usr/local/ec/bin 
 
 # copy config 
-COPY ./config/elasticsearch.yml /usr/local/ec/config/
-
+COPY ./config/elasticsearch.yml.template /usr/local/ec/config/
+COPY ./config/node.sh /root/
 RUN mkdir -p /var/lib/data/ec
 RUN mkdir -p /var/log/ec
 
@@ -36,5 +36,5 @@ RUN ssh-keygen -t rsa -f ~/.ssh/id_rsa -P '' && \
 RUN sysctl -w vm.max_map_count=262144
 
 
-CMD [ "sh", "-c", "service ssh start; su - ec  /usr/local/ec/bin/elasticsearch"]
+CMD [ "sh", "-c", "service ssh start; sh /root/node.sh ;su - ec  /usr/local/ec/bin/elasticsearch"]
 
