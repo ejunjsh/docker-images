@@ -5,7 +5,7 @@ sudo docker rm -f kafka$1 &> /dev/null
         sudo docker run -itd \
                         --net=hadoop \
                         --name kafka$1 \
-                        -e brokerid=1 \
+                        -e brokerid=$1 \
                         --hostname kafka$1 \
                         ejunjsh/kafka:1.0 &> /dev/null
 
