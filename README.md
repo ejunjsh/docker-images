@@ -6,4 +6,9 @@ all kinds of docker images
 sudo docker network create --driver=bridge hadoop
 ```
 
+## start container management
+```
+sh start-portainer.sh
+```
+
 ## see detail in related folder
