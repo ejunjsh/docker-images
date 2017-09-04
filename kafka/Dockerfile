@@ -29,5 +29,5 @@ RUN mkdir -p /var/lib/kafka/
 RUN ssh-keygen -t rsa -f ~/.ssh/id_rsa -P '' && \
     cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
 
-CMD [ "sh", "-c", "./create-broker-id.sh;kafka-server-start.sh /usr/local/kafka/config/server.properties;bash"]
+CMD [ "sh", "-c", "./create-broker-id.sh;kafka-server-start.sh /usr/local/kafka/config/server.properties"]
 
